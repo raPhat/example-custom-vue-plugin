@@ -9,14 +9,16 @@
       window.translationSource = {
         "default.greetings": {
           hi: "Hi",
-          hello: "Hello"
+          hello: "Hello :name"
         }
       };
     </script>
   </head>
   <body>
     <div id="app">
-      {{ 'greetings.hi' | trans }}
+      <p>{{ 'greetings.hi' | trans }}</p>
+      <p>{{ 'greetings.hello' | trans({ name: 'Buzzwoo' }) }}</p>
+      <p>{{ lang('greetings.hello', { name: 'By Mixin' }) }}</p>
     </div>
     <script src="lang.min.js"></script>
     <script type="module">
@@ -26,10 +28,7 @@
       Vue.use(LangPlugin);
 
       var app = new Vue({
-        el: '#app',
-        data: {
-          test: 'Hello!'
-        }
+        el: '#app'
       });
     </script>
   </body>

@@ -5,8 +5,18 @@ export default {
     });
     lang.setLocale("default");
 
-    Vue.filter('trans', (...args) => {
+    // optional (1)
+    Vue.filter("trans", (...args) => {
       return lang.get(...args);
+    });
+
+    // optional (2)
+    Vue.mixin({
+      methods: {
+        lang(...args) {
+          return lang.get(...args);
+        }
+      }
     });
   }
 };
